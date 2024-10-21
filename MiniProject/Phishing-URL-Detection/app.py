@@ -8,10 +8,21 @@ import warnings
 import pickle
 warnings.filterwarnings('ignore')
 from feature import FeatureExtraction
+import os
 
-file = open("model.pkl","rb")
-gbc = pickle.load(file)
-file.close()
+# Get the current directory where app.py is running
+base_dir = os.path.abspath(os.path.dirname(__file__))
+
+# Path to the model file
+model_path = os.path.join(base_dir, 'model.pkl')
+
+# Load the model
+with open(model_path, "rb") as file:
+    gbc = pickle.load(file)
+
+#file = open("model.pkl","rb")
+#gbc = pickle.load(file)
+3#file.close()
 
 
 app = Flask(__name__)
